@@ -1,0 +1,38 @@
+version: '3'
+services:
+  selenium-hub:
+    image: selenium/hub
+    container_name: e2e_selenium
+    ports:
+      - "4444:4444"
+
+  node-chrome:
+    image: selenium/node-chrome
+    container_name: e2e_node_chrome
+    depends_on:
+      - selenium-hub
+    links:
+      # "SERVICE-IDENTIFIER:SERVICE_ACCESSIBLE_HOSTNAME_IN_CONTAINER"
+      - "selenium-hub:selenium_hub"
+    environment:
+      HUB_PORT_4444_TCP_ADDR: selenium-hub
+      HUB_PORT_4444_TCP_PORT: 4444
+
+  # For debugging purpose:
+  # $ docker-compose up node-chrome-debug -d
+  # $ yarn run nightwatch
+  # $ vnc http://localhost:5900
+  node-chrome-debug:
+    image: selenium/node-chrome-debug
+    container_name: e2e_node_chrome_debug
+    ports:
+      # VNC Port
+      - "5900:5900"
+    depends_on:
+      - selenium-hub
+    links:
+      # "SERVICE-IDENTIFIER:SERVICE_ACCESSIBLE_HOSTNAME_IN_CONTAINER"
+      - "selenium-hub:selenium_hub"
+    environment:
+      HUB_PORT_4444_TCP_ADDR: selenium-hub
+      HUB_PORT_4444_TCP_PORT: 4444

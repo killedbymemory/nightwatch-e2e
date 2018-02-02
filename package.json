@@ -1,0 +1,11 @@
+{
+  "name": "nightwatch-e2e",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/killedbymemory/nightwatch-e2e",
+  "author": "Leonardo Situmorang <leonardo.situmorang@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "nightwatch": "^0.9.19"
+  }
+}
