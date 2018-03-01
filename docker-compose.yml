@@ -2,13 +2,13 @@ version: '3'
 services:
   selenium-hub:
     image: selenium/hub
-    container_name: e2e_selenium
+    #container_name: e2e_selenium
     ports:
-      - "4444:4444"
+     - "4444:4444"
 
   node-chrome:
     image: selenium/node-chrome
-    container_name: e2e_node_chrome
+    #container_name: e2e_node_chrome
     depends_on:
       - selenium-hub
     links:

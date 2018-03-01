@@ -4,9 +4,6 @@
  *
  */
 
-// Load environment variables
-require('dotenv');
-
 /**
  * Credit:
  * https://github.com/keystonejs/keystone-nightwatch-e2e/blob/master/nightwatch.conf.js
